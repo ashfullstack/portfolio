@@ -297,6 +297,10 @@
             <div class="container  d-flex justify-content-center">
                 <div class="form-container my-5">
                     <form class="form" id="smsForm">
+                        <div class="form-group">
+                        <label class="fs-6" for="email"> Name</label>
+                        <input required="" name="email" id="name" type="text">
+                      </div>
                       <div class="form-group">
                         <label class="fs-6" for="email"> Email</label>
                         <input required="" name="email" id="email" type="text">
@@ -352,17 +356,37 @@
 });
 
 
-  document.getElementById("smsForm").addEventListener("submit", function (event) {
+//   document.getElementById("smsForm").addEventListener("submit", function (event) {
+//   event.preventDefault();
+
+//   let phone = document.getElementById("email").value;
+//   let message = document.getElementById("textarea").value;
+
+//   // Encode message for URL safety
+//   let smsLink = `sms:${phone}?body=${encodeURIComponent(message)}`;
+  
+//   // Open SMS app
+//   window.location.href = smsLink;
+// });
+
+
+    document.getElementById("smsForm").addEventListener("submit", function (event) {
   event.preventDefault();
 
-  let phone = document.getElementById("email").value;
-  let message = document.getElementById("textarea").value;
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let message = document.getElementById("message").value;
 
-  // Encode message for URL safety
-  let smsLink = `sms:${phone}?body=${encodeURIComponent(message)}`;
-  
-  // Open SMS app
-  window.location.href = smsLink;
+  let formattedMessage = `New Contact Form Submission:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+
+  // Open SMS App
+  let phoneNumber = "+919689864518"; // Your phone number
+  window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent(formattedMessage)}`;
+
+  // Open Email App (Optional)
+  let emailReceiver = "use.corextech101@gmail.com"; // Your email
+  let subject = "New Contact Form Submission";
+  window.location.href = `mailto:${emailReceiver}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(formattedMessage)}`;
 });
 
 </script>
