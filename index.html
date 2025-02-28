@@ -296,7 +296,7 @@
 
             <div class="container  d-flex justify-content-center">
                 <div class="form-container my-5">
-                    <form class="form">
+                    <form class="form" id="smsForm">
                       <div class="form-group">
                         <label class="fs-6" for="email"> Email</label>
                         <input required="" name="email" id="email" type="text">
@@ -349,6 +349,20 @@
             }
         });
     });
+});
+
+
+  document.getElementById("smsForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  let phone = document.getElementById("email").value;
+  let message = document.getElementById("textarea").value;
+
+  // Encode message for URL safety
+  let smsLink = `sms:${phone}?body=${encodeURIComponent(message)}`;
+  
+  // Open SMS app
+  window.location.href = smsLink;
 });
 
 </script>
