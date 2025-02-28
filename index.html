@@ -296,7 +296,7 @@
 
             <div class="container  d-flex justify-content-center">
                 <div class="form-container my-5">
-                    <form onsubmit="sendEmail()";reset() ;return false ;  class="form" id="smsForm">
+                    <form onsubmit="sendEmail()"  class="form" id="smsForm">
                         
                         
                         <div class="form-group">
@@ -362,7 +362,7 @@
 
 function sendEmail(){
     Email.send({
-    Host : "smtp.@gmail.com",
+    Host : "smtp.gmail.com",
     Username : "use.corextech101@gmail.com",
     Password : "password",
     To : 'use.corextech101@gmail.com',
