@@ -296,8 +296,8 @@
 
             <div class="container  d-flex justify-content-center">
                 <div class="form-container my-5">
-                    <form action="https://api.web3forms.com/submit" method="POST" class="form" id="smsForm">
-                        <input type="hidden" name="access_key" value="957aff08-d2d4-41c0-b390-8fb0b5d47b8b">
+                    <form onsubmit="sendEmail()";reset() ;return false ;  class="form" id="smsForm">
+                        
                         
                         <div class="form-group">
                         <label class="fs-6" for="name"> Name</label>
@@ -334,7 +334,8 @@
     </body>
 </html>
 
-
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
     // Select all nav links with the data-target attribute
@@ -356,6 +357,30 @@
         });
     });
 });
+
+
+
+function sendEmail(){
+    Email.send({
+    Host : "smtp.@gmail.com",
+    Username : "use.corextech101@gmail.com",
+    Password : "password",
+    To : 'use.corextech101@gmail.com',
+    From : document.getElemetById("email").value,
+    Subject : "This is the subject",
+    Body : "And this is the body"
+}).then(
+  message => alert(message)
+);
+
+    
+}
+
+
+
+
+
+    
 
 
 //   document.getElementById("smsForm").addEventListener("submit", function (event) {
